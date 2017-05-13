@@ -1,0 +1,12 @@
+.tile {
+    max-width: 300px;
+    max-height: 300px;
+    background: #6E6E6E;
+}
+
+.tile_img {
+    max-width: inherit;
+    max-height: inherit;
+    background-size: cover;
+
+}
