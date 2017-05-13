@@ -24,6 +24,8 @@ $container['view'] = function ($container) {
 };
 
 
+/*
+
 // replace relative uris to absolute uris
 $mw_body = function($request, $response, $next) { 
     $response = $next($request, $response);
@@ -47,6 +49,8 @@ $mw_body = function($request, $response, $next) {
 };
 
 $app->add( $mw_body );
+
+*/
 
 
 // catchall: '/[{path:.*}]'
