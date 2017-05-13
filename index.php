@@ -42,9 +42,9 @@ $mw_body = function($request, $response, $next) {
     
     $newResp = new \Slim\Http\Response(); 
     $newResp->write($body);
-	$newResp->withStatus(200);
 	
-    return $newResp; 
+    return $response->withBody($body);
+    
 };
 
 $app->add( $mw_body );
