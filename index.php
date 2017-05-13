@@ -25,19 +25,15 @@ $container['view'] = function ($container) {
 
 
 
+/*
 // replace relative uris to absolute uris
 $mw_body = function($request, $response, $next) { 
     $response = $next($request, $response);
 
 
-    if ( !$_SERVER['HTTP_HOST'] =='trendiamo' ){
-		
+	$replacement = '="/swpbt/';
+    if ( $_SERVER['HTTP_HOST'] =='trendiamo' ){	
 		$replacement = '="/';
-	
-	}else{
-		
-		$replacement = '="/swpbt/';
-	
 	}
 	
     $body = $response->getBody();
@@ -46,19 +42,18 @@ $mw_body = function($request, $response, $next) {
     // TODO: ugly HACK for frontentdesign
 	$body = str_replace('="../', $replacement  , $body );
     
-    $body .= '<!-- hostname: '. $_SERVER['HTTP_HOST'] . ' -->';
-    
-    $newResp = new \Slim\Http\Response(); 
+    $newResp = new \Slim\Http\Body(''); 
     $newResp->write($body);
-
-    return $newResp; 
+	
+    return $response->withBody( $newResp );
+    
 };
 
 $app->add( $mw_body );
+*/
 
 
 // catchall: '/[{path:.*}]'
-
 $app->get('/', function($request, $response, $path = null) {
 	
 	return $this->view->render($response, 'main.htm', [] );
@@ -66,11 +61,44 @@ $app->get('/', function($request, $response, $path = null) {
 })->setName('start');
 
 
-$app->get('/product', function($request, $response, $path = null) {
 
-    return $this->view->render($response, 'product.htm', [] );
+
+$app->get('/product/{id}', function($request, $response, $path = null) {
+    
+    return $this->view->render($response, 'product_'. $request->getAttribute('id') .'.htm', [] );
     
 })->setName('productpage');
+
+
+
+
+
+$app->post('/subscribe', function($request, $response, $path = null) {
+    
+    
+	$data = $app->request->post();
+    
+    $error = array();
+    
+    // validate
+    if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
+		$error['mail'] = 'fehlerhaft!';
+	}
+    
+    
+    // TODO: save
+    if( empty($error) ){
+		
+		return $this->view->render($response, 'thanks.htm', [] );	
+	
+	}
+	
+	
+    return $this->view->render($response, 'umfrage.htm', $error );
+    
+})->setName('subscribe');
+
+
 
 
 // Run app
@@ -78,6 +106,3 @@ $app->run();
 
 
 
-
-
-?>
