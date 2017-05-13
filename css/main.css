@@ -44,3 +44,15 @@ html, body {
     cursor: pointer;
     color: #bd1e4a;
 }
+
+@media only screen and (max-width: 400px) {
+
+    .header_nav {
+        width: 160px;
+        float: right;
+    }
+
+    .btn_menu {
+        width: 80px;
+    }
+}
