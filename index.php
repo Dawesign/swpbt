@@ -19,7 +19,11 @@ $container['view'] = function ($container) {
     // Instantiate and add Slim specific extension
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/swpbt');
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
-
+	
+	if ( $_SERVER['HTTP_HOST'] =='localhost' ){	
+		$view['baseUrl'] = '/swpbt';
+	}
+	 
     return $view;
 };
 
