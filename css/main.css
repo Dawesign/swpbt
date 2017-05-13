@@ -1,0 +1,46 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 100%;
+    height: 40px;
+    background: black;
+}
+
+.logo_wrapper {
+    float: left;
+    width: 160px;
+    height: 40px;
+    margin-left: 6px;
+}
+
+.logo_img {
+    margin-top: 2px;
+    width: 160px;
+    padding: 5px;
+}
+
+.header_nav {
+    width: 200px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.btn_menu {
+    width: 100px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    float: left;
+    line-height: 40px;
+    transition: color 0.5s;
+}
+
+.btn_menu:hover {
+    cursor: pointer;
+    color: #bd1e4a;
+}
