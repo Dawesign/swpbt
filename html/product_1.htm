@@ -1,0 +1,67 @@
+{% include"header.htm"%}
+
+<div class="content-wrapper">
+  <div class="ui grid">
+    <div class="doubling two column row">
+      <div class="column">
+        <div class="title">
+          <h1 class="product-title">GIRLS OVERSIZED SHIRT GREEN</h1>
+          <p class="text">vor 23 Minuten</p>
+        </div>
+        <div class="gallery">
+          <div class="pic"> <img class="tile_img" src="../src/products/CC_Shirt_Grils_LightGreen_Front_grande.jpg" alt="CC Shirt Grils LightGreen Front grande"> </img> </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="profil">
+
+        </div>
+        <div class="info">
+          <p class="text">Oversized Shirt Green</p>
+          <p class="text">Light Green (Farbe)</p>
+          <p class="text">Schwarzer Druck auf der Brust</p>
+          <p class="text">Jenny ist 1.69 m groß und trägt S</p>
+          <hr />
+        </div>
+        <div class="info">
+          <p class="text">100% Baumwolle</p>
+          <p class="text">Made in Portugal</p>
+          <hr />
+        </div>
+        <div class="status">
+          <div class="status_block">
+
+            <div class="votes">
+              <div class="ui indicating progress">
+                <div class="bar"></div>
+                <div class="label" id="label_votes">VOTES</div>
+              </div>
+
+              <div class="ignored">
+                <div class="ui icon buttons">
+                  <div id="votebutton" class="increment ui basic green button icon"><i class="plus icon"></i></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+  $("#votebutton").click( function(){
+   $.ajax({
+      url: "/count/1",
+    }).done(function() {
+      $(".increment .ui .basic .green .button .icon").addClass( "done" );
+    });
+  });
+});
+</script>
