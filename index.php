@@ -75,38 +75,38 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
 
 $app->get('/count/{id}', function($request, $response, $path = null) {
     
-    
-    
-    if( empty($error) ){
-		
-		$id = $request->getAttribute('id');
-		$id += 0;
-		
-		if( $id >= 0 && $id < 100 ){
-			$filename = 'data/counter.txt';
-			
-			$fp = fopen( $filename.'.lock' ,'c+');
-			flock( $fp, LOCK_EX );
-				
-				$filedata = file_get_contents($filename);
-				$data = empty($filedata) ? array() : json_decode( $filedata );		
-				$data[ $id ] = ($data[ $id ]+1);
-				
-				file_put_contents($filename, json_encode($data) );
-
-			flock( $fp, LOCK_UN );
-			
-			/*
-			 $this->get('cookies')->set('id_'.$id , [
-				'value' => '1',
-				'expires' => '28 days'
-			]);
-			*/
-		
-		}
-		
-	}
+        
+	$id = $request->getAttribute('id');
+	$id += 0;
 	
+	if( $id >= 0 && $id < 100 ){
+		$filename = 'data/counter.txt';
+		
+		$fp = fopen( $filename.'.lock' ,'c+');
+		flock( $fp, LOCK_EX );
+			
+			$filedata = file_get_contents($filename);
+			$data = empty($filedata) ? array() : json_decode( $filedata );		
+			
+			if( isset( $data[ $id ] ) && is_array($data) ){
+				$data[ $id ] = $data[ $id ]+1;
+			}else{
+				$data[ $id ] = 1;
+			}
+			
+			file_put_contents($filename, json_encode($data) );
+
+		flock( $fp, LOCK_UN );
+		
+		/*
+		 $this->get('cookies')->set('id_'.$id , [
+			'value' => '1',
+			'expires' => '28 days'
+		]);
+		*/
+	
+	}
+
     return $response->write('bana');
 });
 
@@ -141,6 +141,11 @@ $app->post('/subscribe', function($request, $response, $path = null) {
 				
 			$filedata = file_get_contents($filename);
 			$jsondata = empty($filedata) ? array() : json_decode( $filedata );
+			
+			if( !is_array($jsondata) ){
+					$jsondata = array();
+			}
+			
 			array_push($jsondata, $data);	
 			
 			file_put_contents($filename, json_encode( $jsondata ) );
