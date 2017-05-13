@@ -24,6 +24,8 @@ $container['view'] = function ($container) {
 };
 
 
+
+/*
 // replace relative uris to absolute uris
 $mw_body = function($request, $response, $next) { 
     $response = $next($request, $response);
@@ -40,15 +42,15 @@ $mw_body = function($request, $response, $next) {
     // TODO: ugly HACK for frontentdesign
 	$body = str_replace('="../', $replacement  , $body );
     
-    $newResp = new \Slim\Http\Response(); 
+    $newResp = new \Slim\Http\Body(''); 
     $newResp->write($body);
 	
-    return $response->withBody($body);
+    return $response->withBody( $newResp );
     
 };
 
 $app->add( $mw_body );
-
+*/
 
 
 // catchall: '/[{path:.*}]'
