@@ -70,6 +70,37 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
 })->setName('productpage');
 
 
+
+
+
+$app->post('/subscribe', function($request, $response, $path = null) {
+    
+    
+	$data = $app->request->post();
+    
+    $error = array();
+    
+    // validate
+    if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
+		$error['mail'] = 'fehlerhaft!';
+	}
+    
+    
+    // TODO: save
+    if( empty($error) ){
+		
+		return $this->view->render($response, 'thanks.htm', [] );	
+	
+	}
+	
+	
+    return $this->view->render($response, 'umfrage.htm', $error );
+    
+})->setName('subscribe');
+
+
+
+
 // Run app
 $app->run();
 
