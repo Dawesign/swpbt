@@ -1,0 +1,16 @@
+.content-wrapper {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F2F2F2;
+}
+
+.product-title {
+    margin-bottom: -3px;
+}
+
+.product-time {
+    color: #6E6E6E;
+    font-size: 12pt;
+}
