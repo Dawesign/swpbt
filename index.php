@@ -78,7 +78,6 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
 $app->get('/count/{id}', function($request, $response, $path = null) {
     
     
-    $error = array();
     
     if( empty($error) ){
 		
@@ -94,19 +93,22 @@ $app->get('/count/{id}', function($request, $response, $path = null) {
 				$data = empty($filedata) ? array() : json_decode( $filedata );		
 				$data[ $id ] = ($data[ $id ]+1);
 				
-				file_put_contents($filename, json_encode($filename) );
+				file_put_contents($filename, json_encode($data) );
 
 			flock( $fp, LOCK_UN );
+			
+			/*
+			 $this->get('cookies')->set('id_'.$id , [
+				'value' => '1',
+				'expires' => '28 days'
+			]);
+			*/
 		
 		}
 		
 	}
 	
-    $data = array('status'=>'ok');
-	$newResponse = $oldResponse->withJson($data);
-    
-    return $newResponse;
-    
+    return $response->write('bana');
 });
 
 
