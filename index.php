@@ -82,6 +82,7 @@ $app->get('/count/{id}', function($request, $response, $path = null) {
     if( empty($error) ){
 		
 		$id = $request->getAttribute('id');
+		$id += 0;
 		
 		if( $id >= 0 && $id < 100 ){
 			$filename = 'data/counter.txt';
