@@ -88,7 +88,12 @@ $app->get('/count/{id}', function($request, $response, $path = null) {
 			$filedata = file_get_contents($filename);
 			$data = empty($filedata) ? array() : json_decode( $filedata );		
 			
-			if( isset( $data[ $id ] ) && is_array($data) ){
+			if( ! is_array($data) ){
+				$data = array();
+			}
+			
+			
+			if( isset( $data[ $id ] ) ){
 				$data[ $id ] = $data[ $id ]+1;
 			}else{
 				$data[ $id ] = 1;
