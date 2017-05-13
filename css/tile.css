@@ -1,7 +1,20 @@
+.wrapper {
+    text-align: center;
+}
+
+.tiles_wrapper {
+    display: inline-block;
+    max-width: 800px;
+    height: 100%;
+    padding: 10px;
+}
+
 .tile {
-    max-width: 300px;
-    max-height: 300px;
-    background: #6E6E6E;
+    display: inline-block;
+    position: relative;
+    max-width: 233px;
+    max-height: 400px;
+    margin: 10px;
 }
 
 .tile_img {
@@ -9,4 +22,33 @@
     max-height: inherit;
     background-size: cover;
 
+}
+
+.tile_heading {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
+    color: #333333;
+}
+
+.btn_like {
+    position: absolute;
+    right: 10px;
+    bottom: 50px;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 6px;
+    transition: border-color 0.3s, color 0.3s;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.btn_like:hover {
+    cursor: pointer;
+    border-color: #ff245d;
+    color: #ff245d;
 }
