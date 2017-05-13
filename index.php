@@ -17,7 +17,7 @@ $container['view'] = function ($container) {
     ]);
     
     // Instantiate and add Slim specific extension
-    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $_SERVER['HTTP_HOST'] == 'localhost' ? '/swpbt' :'' ));
+    $view->addExtension(new Slim\Views\TwigExtension($container['router'], substr($_SERVER['HTTP_HOST'],0,9) == 'localhost' ? '/swpbt' :'' ));
 	
     return $view;
 };
