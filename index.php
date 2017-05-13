@@ -13,7 +13,7 @@ $container = $app->getContainer();
 // Register component on container
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig('tpl', [
-        'cache' => 'cache'
+       //  'cache' => 'cache'
     ]);
     
     // Instantiate and add Slim specific extension
@@ -30,7 +30,7 @@ $mw_body = function($request, $response, $next) {
     $response = $next($request, $response);
 
 
-    if ( $_SERVER['HTTP_HOST'] =='trendiamo' ){
+    if ( !$_SERVER['HTTP_HOST'] =='trendiamo' ){
 		
 		$replacement = '="/';
 	
@@ -39,7 +39,7 @@ $mw_body = function($request, $response, $next) {
 		$replacement = '="/swpbt/';
 	
 	}
-    
+	
     $body = $response->getBody();
     
     
