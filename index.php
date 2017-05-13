@@ -123,7 +123,7 @@ $app->post('/subscribe', function($request, $response, $path = null) {
     $error = array();
     
     // validate
-    if(!empty($data['mail']){
+    if(!empty($data['mail'])){
 		if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
 			$error['mail'] = 'fehlerhaft!';
 		}
