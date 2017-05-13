@@ -24,8 +24,6 @@ $container['view'] = function ($container) {
 };
 
 
-/*
-
 // replace relative uris to absolute uris
 $mw_body = function($request, $response, $next) { 
     $response = $next($request, $response);
@@ -44,17 +42,16 @@ $mw_body = function($request, $response, $next) {
     
     $newResp = new \Slim\Http\Response(); 
     $newResp->write($body);
-
+	$newResp->withStatus(200);
+	
     return $newResp; 
 };
 
 $app->add( $mw_body );
 
-*/
 
 
 // catchall: '/[{path:.*}]'
-
 $app->get('/', function($request, $response, $path = null) {
 	
 	return $this->view->render($response, 'main.htm', [] );
