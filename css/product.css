@@ -6,11 +6,106 @@
     background-color: #F2F2F2;
 }
 
+.title {
+    height: 100px;
+}
+
+.profil{
+    height: 100px;
+}
+
 .product-title {
     margin-bottom: -3px;
 }
 
-.product-time {
+.text {
     color: #6E6E6E;
-    font-size: 12pt;
+    font-size: 11pt;
+}
+
+.status_block {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#label_votes {
+    color: #6E6E6E;
+    font-size: 14pt;
+}
+
+.status_text_off {
+    color: #6E6E6E;
+    font-size: 14pt;
+    margin: 0;
+}
+
+.status_text_1 {
+    color: #6FBF54;
+    font-size: 14pt;
+    margin: 0;
+}
+
+.status_text_2 {
+    color: #333333;
+    font-size: 14pt;
+    margin: 0;
+}
+
+.votes {
+    margin-top: 60px;
+}
+
+.profil_img {
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    float: left;
+    margin-right: 20px;
+    background-color: #CDCDCD;
+}
+
+.profil_text {
+    height: 50px;
+    float: left;
+}
+
+.profil-title {
+    margin-bottom: -3px;
+    color: #6E6E6E;
+}
+
+.profil-title_sp{
+    color: #000000;
+    margin-bottom: -3px;
+}
+
+
+
+.gallery {
+    background-color: #E6E6E6;
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+}
+
+.tile_img {
+    width: 370px;
+    height: auto;
+}
+
+.ignored {
+    text-align: center;
+    margin-top: 30px;
+}
+
+hr {
+    border: none;
+    border-top: 4px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    height: 1px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

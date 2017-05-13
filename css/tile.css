@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .wrapper {
     text-align: center;
 }
@@ -9,6 +10,9 @@
     padding: 10px;
 }
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 .tile {
     display: inline-block;
     position: relative;
@@ -23,6 +27,7 @@
     background-size: cover;
 
 }
+<<<<<<< Updated upstream
 
 .tile_heading {
     text-align: center;
@@ -52,3 +57,41 @@
     border-color: #ff245d;
     color: #ff245d;
 }
+=======
+=======
+.content-wrapper {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F2F2F2;
+}
+
+.product-title {
+    margin-bottom: -3px;
+}
+
+.product-time {
+    color: #6E6E6E;
+    font-size: 12pt;
+}
+
+.gallery {
+    margin-top: 30px;
+    background-color: #E6E6E6;
+    text-align: center;
+}
+
+.tile_img {
+    width: 400px;
+    height: auto;
+}
+
+hr {
+    height: 5px;
+    margin: 0 auto;
+    background: #ffffff;
+    color: white;
+}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
