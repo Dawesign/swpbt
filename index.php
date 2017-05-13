@@ -73,6 +73,45 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
 
 
 
+
+
+$app->get('/count/{id}', function($request, $response, $path = null) {
+    
+    
+    $error = array();
+    
+    if( empty($error) ){
+		
+		$id = $request->getAttribute('id');
+		
+		if( $id >= 0 && $id < 100 ){
+			$filename = 'data/counter.txt';
+			
+			$fp = fopen( $filename.'.lock' ,'c+');
+			flock( $fp, LOCK_EX );
+				
+				$filedata = file_get_contents($filename);
+				$data = empty($filedata) ? array() : json_decode( $filedata );		
+				$data[ $id ] = ($data[ $id ]+1);
+				
+				file_put_contents($filename, json_encode($filename) );
+
+			flock( $fp, LOCK_UN );
+		
+		}
+		
+	}
+	
+    $data = array('status'=>'ok');
+	$newResponse = $oldResponse->withJson($data);
+    
+    return $newResponse;
+    
+});
+
+
+
+
 $app->post('/subscribe', function($request, $response, $path = null) {
     
     
@@ -84,17 +123,23 @@ $app->post('/subscribe', function($request, $response, $path = null) {
     if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
 		$error['mail'] = 'fehlerhaft!';
 	}
-    
-    
+	
     // TODO: save
     if( empty($error) ){
+		
+		
+		$filename = 'data/umfrage.txt';
+		
+		$filedata = file_get_contents($filename);
+		$data = empty($filedata) ? array() : json_decode( $filedata );		
+		file_put_contents($filename, json_encode($filename) );
 		
 		return $this->view->render($response, 'thanks.htm', [] );	
 	
 	}
-	
-	
+    
     return $this->view->render($response, 'umfrage.htm', $error );
+    
     
 })->setName('subscribe');
 
