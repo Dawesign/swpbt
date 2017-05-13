@@ -24,32 +24,22 @@ $container['view'] = function ($container) {
 };
 
 
-/*
- 
-$app->add(function ($request, $response, $next) use ($c) {
-    // First execute anything else
-    $response = $next($request, $response);
 
-    // Check if the response should render a 404
-    if (404 === $response->getStatusCode() &&
-        0   === $response->getBody()->getSize()
-    ) {
-        // A 404 should be invoked
-        $handler = $c['notFoundHandler'];
-        return $handler($request, $response);
-    }
+// catchall: '/[{path:.*}]' 
 
-    // Any other request, pass on current response
-    return $response;
-});
-*/
-
-
-$app->get('/[{path:.*}]', function($request, $response, $path = null) {
+$app->get('/', function($request, $response, $path = null) {
 
     return $this->view->render($response, 'main.htm', [] );
     
 })->setName('start');
+
+
+
+$app->get('/product', function($request, $response, $path = null) {
+
+    return $this->view->render($response, 'product.htm', [] );
+    
+})->setName('productpage');
 
 
 
