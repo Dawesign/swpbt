@@ -24,20 +24,16 @@ $container['view'] = function ($container) {
 };
 
 
+/*
 
 // replace relative uris to absolute uris
 $mw_body = function($request, $response, $next) { 
     $response = $next($request, $response);
 
 
-    if ( !$_SERVER['HTTP_HOST'] =='trendiamo' ){
-		
+	$replacement = '="/swpbt/';
+    if ( $_SERVER['HTTP_HOST'] =='trendiamo' ){	
 		$replacement = '="/';
-	
-	}else{
-		
-		$replacement = '="/swpbt/';
-	
 	}
 	
     $body = $response->getBody();
@@ -46,8 +42,6 @@ $mw_body = function($request, $response, $next) {
     // TODO: ugly HACK for frontentdesign
 	$body = str_replace('="../', $replacement  , $body );
     
-    $body .= '<!-- hostname: '. $_SERVER['HTTP_HOST'] . ' -->';
-    
     $newResp = new \Slim\Http\Response(); 
     $newResp->write($body);
 
@@ -55,6 +49,8 @@ $mw_body = function($request, $response, $next) {
 };
 
 $app->add( $mw_body );
+
+*/
 
 
 // catchall: '/[{path:.*}]'
