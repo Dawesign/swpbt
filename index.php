@@ -123,9 +123,14 @@ $app->post('/subscribe', function($request, $response, $path = null) {
     $error = array();
     
     // validate
-    if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
-		$error['mail'] = 'fehlerhaft!';
+    if(!empty($data['mail']){
+		if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
+			$error['mail'] = 'fehlerhaft!';
+		}
+	}else{
+		$error['mail'] = 'erforderlich.';
 	}
+	
 	
     // TODO: save
     if( empty($error) ){
@@ -133,9 +138,17 @@ $app->post('/subscribe', function($request, $response, $path = null) {
 		
 		$filename = 'data/umfrage.txt';
 		
-		$filedata = file_get_contents($filename);
-		$data = empty($filedata) ? array() : json_decode( $filedata );		
-		file_put_contents($filename, json_encode($filename) );
+		$fp = fopen( $filename.'.lock' ,'c+');
+		flock( $fp, LOCK_EX );
+				
+			$filedata = file_get_contents($filename);
+			$jsondata = empty($filedata) ? array() : json_decode( $filedata );
+			array_push($jsondata, $data);	
+			
+			file_put_contents($filename, json_encode( $jsondata ) );
+		
+		
+		flock( $fp, LOCK_UN );
 		
 		return $this->view->render($response, 'thanks.htm', [] );	
 	
