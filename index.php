@@ -24,8 +24,6 @@ $container['view'] = function ($container) {
 };
 
 
-/*
-
 // replace relative uris to absolute uris
 $mw_body = function($request, $response, $next) { 
     $response = $next($request, $response);
@@ -50,8 +48,6 @@ $mw_body = function($request, $response, $next) {
 
 $app->add( $mw_body );
 
-*/
-
 
 // catchall: '/[{path:.*}]'
 
@@ -62,9 +58,11 @@ $app->get('/', function($request, $response, $path = null) {
 })->setName('start');
 
 
-$app->get('/product', function($request, $response, $path = null) {
 
-    return $this->view->render($response, 'product.htm', [] );
+
+$app->get('/product/{id}', function($request, $response, $path = null) {
+    
+    return $this->view->render($response, 'product_'. $request->getAttribute('id') .'.htm', [] );
     
 })->setName('productpage');
 
@@ -74,6 +72,3 @@ $app->run();
 
 
 
-
-
-?>
