@@ -73,7 +73,8 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
     fclose($fp);
     
     $filedata = file_get_contents($filename);
-	$data = empty($filedata) ? array() : json_decode( $filedata );		
+	$data = empty($filedata) ? array() : unserialize( $filedata );		
+	
 	
 	$votes = 0;
 	if( is_array($data) ){
@@ -95,31 +96,38 @@ $app->get('/count/{id}', function($request, $response, $path = null) {
     
         
 	$id = $request->getAttribute('id');
-	$id += 0;
+	$id = (int) $id;
 	
+	$data = array();
 	if( $id >= 0 && $id < 100 ){
 		$filename = 'data/counter.txt';
 		
 		$fp = fopen( $filename.'.lock' ,'c+');
 		flock( $fp, LOCK_EX );
 			
-			$filedata = file_get_contents($filename);
-			$data = empty($filedata) ? array() : json_decode( $filedata );		
+			$file = file_get_contents($filename);
+		
+			
+			$data = empty($file) ? array() : unserialize( $file );		
 			
 			if( ! is_array($data) ){
 				$data = array();
 			}
 			
-			
-			if( isset( $data[ $id ] ) ){
-				$data[ $id ] = $data[ $id ]+1;
+			if( isset($data[$id] )){
+				
+				$data[ $id ] = ((int) $data[ $id ])+1;
+		
 			}else{
+				
 				$data[ $id ] = 1;
+		
 			}
 			
-			file_put_contents($filename, json_encode($data) );
+			file_put_contents( $filename, serialize($data) );
 
 		flock( $fp, LOCK_UN );
+		fclose($fp);
 		
 		/*
 		 $this->get('cookies')->set('id_'.$id , [
@@ -130,7 +138,7 @@ $app->get('/count/{id}', function($request, $response, $path = null) {
 	
 	}
 
-    return $response->write('bana');
+    return $response->write('bana '. implode('  ', $data) );
 });
 
 
@@ -174,6 +182,7 @@ $app->post('/subscribe', function($request, $response, $path = null) {
 		
 		
 		flock( $fp, LOCK_UN );
+		fclose($fp);
 		
 		return $this->view->render($response, 'thanks.htm', [] );	
 	
