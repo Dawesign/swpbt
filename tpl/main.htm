@@ -1,59 +1,90 @@
 {% include"header.htm"%}
 <div class="wrapper">
+	
+	
+	<script type="text/javascript">
+
+$( document ).ready(function() {
+	$('.tile_img').click( function(){
+		
+			var id = $(this).parent().find('.btn_like').data('id');
+			location.href = "{{base_url() }}/product/"+ id ;
+		
+		}
+	);
+	
+  $(".btn_like").click( function(){
+   
+   $(this).addClass('disabled');
+   
+   $.ajax({
+      url: "{{ base_url() }}/count/"+ $(this).data('id') ,
+      context: this,
+    }).always(function() {
+		
+		$(this).find('i').css('color', 'darkred');
+		$(this).css('border-color', 'darkred');
+		
+    });
+  });
+});
+</script>
+
+	
     <div class="tiles_wrapper">
         <div id="tile1" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/CC_Shirt_Grils_LightGreen_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/1">girls oversized shirt green</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="1">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile2" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/CC_Shirt_LightGreen_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/2">OVERSIZED SHIRT GREEN</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="2">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile3" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/CollegeShirt_Girls_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/3">GIRLS COLLEGE SHIRT</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="3">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile4" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/CroppedHoodie_Burgundy_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/4">CROPPED HOODIE BURGUNDY</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="4">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile5" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/CroppedHoodie_Grey_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/5">CROPPED HOODIE GREY</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="5">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile6" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/CollegeLongsleeve_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/6">MENS COLLEGE LONGSLEEVE</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="6">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile7" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/Crewneck_Grey_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/7">CREWNECK GREY</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="7">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
         <div id="tile8" class="tile">
             <img class="tile_img" src="{{base_url()}}/src/products/GirlsPants_Grey_Front_grande.jpg">
             <p class="tile_heading"><a href="{{base_url()}}/product/8">GIRLS SHORTS GREY</a></p>
-            <div class="btn_like">
+            <div class="btn_like" data-id="8">
                 <i class="fa fa-heart"></i>
             </div>
         </div>
