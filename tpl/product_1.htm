@@ -9,7 +9,7 @@
           <p class="text">vor 23 Minuten</p>
         </div>
         <div class="gallery">
-          <div class="pic"> <img class="tile_img" src="../src/products/CC_Shirt_Grils_LightGreen_Front_grande.jpg" alt="CC Shirt Grils LightGreen Front grande"> </img> </div>
+          <div class="pic"> <img class="tile_img" src="{{ base_url() }}/src/products/CC_Shirt_Grils_LightGreen_Front_grande.jpg" alt="CC Shirt Grils LightGreen Front grande"> </img> </div>
         </div>
       </div>
       <div class="column">
@@ -28,7 +28,7 @@
           <p class="text">Made in Portugal</p>
           <hr />
         </div>
-        <div class="status">
+        <div class="status ui segment">
           <div class="status_block">
 
             <div class="votes">
@@ -39,13 +39,25 @@
 
               <div class="ignored">
                 <div class="ui icon buttons">
-                  <div id="votebutton" class="increment ui basic green button icon"><i class="plus icon"></i></div>
+                  <div id="votebutton" class="increment ui basic green button icon"><i class="fa fa-heart"></i></div>
                 </div>
               </div>
 
             </div>
 
           </div>
+          
+				<div class="ui dimmer">
+				<div class="content">
+				<div class="center">
+				<h2 class="ui inverted icon header">
+				<i class="heart icon"></i>
+				We like that you like!
+				</h2>
+				</div>
+				</div>
+				</div>
+          
         </div>
 
       </div>
@@ -57,10 +69,14 @@
 
 $( document ).ready(function() {
   $("#votebutton").click( function(){
+   
+   $(this).addClass('disabled');
+   $('.dimmer').dimmer('closeable', false );
+   
    $.ajax({
-      url: "/count/1",
-    }).done(function() {
-      $(".increment .ui .basic .green .button .icon").addClass( "done" );
+      url: "{{ base_url() }}/count/1",
+    }).always(function() {
+	  $(".dimmer").dimmer('show');
     });
   });
 });
