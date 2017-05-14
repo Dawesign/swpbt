@@ -163,6 +163,11 @@ $app->post('/subscribe', function($request, $response, $path = null) {
     $error = array();
     
     // validate
+    
+    if( !isset($data['agb']) ){
+		$error['agb'] = 'haken?';
+	}
+    
     if( strlen(@$data['mail']) > 3 ){
 		if( !preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', $data['mail'] ) ){
 			$error['mail_err'] = 'fehlerhaft!';
