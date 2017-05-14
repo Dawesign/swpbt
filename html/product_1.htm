@@ -32,7 +32,7 @@
           <hr />
         </div>
         <div class="status">
-          <div class="status_block">
+          <div class="ui segment status_block">
 
             <div class="votes">
               <div class="ui indicating progress">
@@ -48,6 +48,15 @@
 
             </div>
 
+
+            <div id="dimmer" class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <h2 class="ui inverted icon header"><i class="heart icon"></i> Dimmed Message! </h2>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -60,10 +69,17 @@
 
 $( document ).ready(function() {
   $("#votebutton").click( function(){
+
+          $('.dimmer')
+            .dimmer('toggle');
+
    $.ajax({
-      url: "/count/1",
+      url: "{{base_url()}}/count/1",
     }).done(function() {
-      $(".increment .ui .basic .green .button .icon").addClass( "done" );
+
+      $('#dimmer')
+        .dimmer('show');
+      //$(".increment .ui .basic .green .button .icon").addClass( "done" );
     });
   });
 });
