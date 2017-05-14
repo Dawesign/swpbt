@@ -1,0 +1,68 @@
+
+    <style>
+        #main_column {
+            background-color: #F2F2F2;
+        }
+        
+        #lock_icon {
+            color: green;
+            font-size: 150%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        #lock_text {
+            color: green;
+        }
+    </style>
+
+    <div class="ui equal width grid" style="background: #EEE; margin-top:3em; padding:2em;">
+        <div class="column"></div>
+        <div class="column" id="main_column">
+            <div class="ui container">
+                <h1>Gefällt dir was du siehst?</h1>
+                <h4>Wir arbeiten daran diese Idee für dich umszusetzen. Du kannst uns dabei helfen indem du die Umfrage ausfüllst. Dankeschön! <i class="fa fa-heart"></i></h4>
+                <form class="ui form" action="{{ base_url() }}/subscribe" method="POST">
+                    <div class="field">
+                        <label>Alter</label>
+                        <input name="age" placeholder="Alter" type="text" value="{{ age }}">
+                    </div>
+                    <div class="inline fields">
+                        <label for="gender">Geschlecht</label>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input name="gender" checked="" value="m" tabindex="0" type="radio">
+                                <label>Männlich</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input name="gender" checked="" value="f" tabindex="0" type="radio">
+                                <label>Weiblich</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>E-Mail</label>
+                        <input name="mail" placeholder="E-Mail" type="text" value="{{ mail }}">
+						<b>{{ mail_err }}</b>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input tabindex="0" type="checkbox">
+                            <label>Ich habe Datenschutzhinweise zur Kenntnis genommen</label>
+                        </div>
+                    </div>
+                    <div class="inline fields">
+                    <button class="ui button" type="submit">Mitmachen!</button>
+        <i class="fa fa-lock" aria-hidden="true" id="lock_icon"></i>
+        <label id="lock_text">Diese Daten werden nicht an Dritte weitergegeben</label>
+
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="column"></div>
+        
+        

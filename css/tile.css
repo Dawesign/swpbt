@@ -17,6 +17,18 @@
     margin: 10px;
 }
 
+.tile img{
+
+	transition:all 0.4s;
+
+}
+
+.tile:hover img{
+	
+	opacity:0.6;
+	
+}
+
 .tile_img {
     max-width: inherit;
     max-height: inherit;
@@ -28,8 +40,9 @@
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 15px;
-    color: #333333;
+    font-size: 1em;
+    color: #333;
+    background:#FFF;
 }
 
 .btn_like {
