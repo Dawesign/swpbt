@@ -52,3 +52,11 @@
     border-color: #ff245d;
     color: #ff245d;
 }
+
+a {
+    color: #333333;
+}
+
+a.hover {
+    color: #4183C4;
+}
