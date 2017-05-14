@@ -92,7 +92,8 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
 	}
 	
     
-    return $this->view->render($response, 'product_'. $id .'.htm', ['vote_number'=> $votes ] );
+    return $this->view->render($response, 'product_'. $id .'.htm', ['vote_number'=> $votes,
+								'BACKBUTTON'=> '<a href="'. $request->getUri()->getBasePath() .'/"><i class="fa fa-arrow-left"></i> Zurück</a>'] );
     
 })->setName('productpage');
 
