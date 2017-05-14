@@ -60,6 +60,16 @@ $app->get('/', function($request, $response, $path = null) {
 
 
 
+$app->get('/impressum', function($request, $response, $path = null) {
+	
+	return $this->view->render($response, 'impressum.htm', [] );
+    
+})->setName('impressum');
+
+
+
+
+
 
 $app->get('/product/{id}', function($request, $response, $path = null) {
     
