@@ -10,15 +10,30 @@ html, body {
 }
 
 .logo_wrapper {
-    width: 160px;
+    width: 300px;
     height: 40px;
     margin: 0 auto;
+    line-height:40px;
+    vertical-align:middle;
+}
+
+.logo_wrapper a, .logo_wrapper a:visited, .logo_wrapper a:link {
+	color:#EEE;
+    vertical-align:middle;
+    font-size:1.2em;
+    display:inline-block
+}
+
+.logo_wrapper a:hover{
+	color:#FFF;
 }
 
 .logo_img {
     margin-top: 2px;
-    width: 160px;
     padding: 5px;
+	width:160px;
+	margin-right:2em;
+    display:inline-block;
 }
 
 .header_nav {
