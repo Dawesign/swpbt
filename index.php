@@ -88,7 +88,7 @@ $app->get('/product/{id}', function($request, $response, $path = null) {
 	
 	$votes = 0;
 	if( is_array($data) ){
-		$votes = $data[  $id ];
+		$votes = (int) @$data[  $id ];
 	}
 	
     
