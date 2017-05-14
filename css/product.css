@@ -7,15 +7,16 @@
 }
 
 .title {
-    height: 100px;
+    height: 60px;
 }
 
 .profil{
-    height: 100px;
+    height: 60px;
 }
 
 .product-title {
     margin-bottom: -3px;
+    text-align: center;
 }
 
 .text {
